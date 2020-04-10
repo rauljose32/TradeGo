@@ -1,4 +1,4 @@
-package com.example.tradego.ui.home;
+package com.example.tradego.ui.cadastro;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tradego.R;
 
-public class HomeFragment extends Fragment {
+public class CadastroFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_cadastro, container, false);
+
 
         return root;
     }

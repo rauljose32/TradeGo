@@ -12,32 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.tradego.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_busca"
+        android:name="com.example.tradego.ui.slideshow.BuscaFragment"
+        android:label="@string/menu_busca"
+        tools:layout="@layout/fragment_busca" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.tradego.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_cadastro"
+        android:name="com.example.tradego.ui.cadastro.CadastroFragment"
+        android:label="@string/menu_cadastro"
+        tools:layout="@layout/fragment_cadastro" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.tradego.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_meusitens"
+        android:name="com.example.tradego.ui.itens.ItensFragment"
+        android:label="@string/menu_itens"
+        tools:layout="@layout/fragment_itens" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.tradego.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.tradego.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>
