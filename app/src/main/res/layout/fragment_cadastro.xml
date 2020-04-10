@@ -6,20 +6,262 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_gallery"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome da Carta: " />
+
+            <EditText
+                android:id="@+id/textNomeCarta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Atributo da Carta: " />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonFogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fogo" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTerra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Terra" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonAgua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Agua" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonVento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vento" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonLuz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Luz" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonTrevas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trevas" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonDivino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Divino" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estrelas da Carta: " />
+
+            <TextView
+                android:id="@+id/textEstrelas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo da Carta: " />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonGuerreiro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Guerreiro" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMago"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mago" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonDragao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dragão" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonPsiquico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Psiquico" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonBesta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Besta" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fada" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonDinossauro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dinossauro" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A Carta possui efeito ?: " />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonEfeitoVerdadeiro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonEfeitoFalso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Não" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A Carta é Reguladora ?: " />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonReguladorVerdadeiro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sim" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonReguladorFalso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Não" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ataque da Carta: " />
+
+            <EditText
+                android:id="@+id/textAtaque"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Defesa da Carta: " />
+
+            <EditText
+                android:id="@+id/textDefesa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonCadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CADASTRAR" />
 
     </LinearLayout>
 </ScrollView>
