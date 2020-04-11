@@ -7,19 +7,17 @@ public class Carta {
     private String tipo;
     private int ataque;
     private int defesa;
-    private boolean efeito;
-    private boolean regulador;
     private String nome;
 
+    public Carta() {
+    }
 
-    public Carta(int estrelas, String atributo, String tipo, int ataque, int defesa, boolean efeito, boolean regulador, String nome) {
+    public Carta(int estrelas, String atributo, String tipo, int ataque, int defesa, String nome) {
         this.estrelas = estrelas;
         this.atributo = atributo;
         this.tipo = tipo;
         this.ataque = ataque;
         this.defesa = defesa;
-        this.efeito = efeito;
-        this.regulador = regulador;
         this.nome = nome;
     }
 
@@ -61,22 +59,6 @@ public class Carta {
 
     public void setDefesa(int defesa) {
         this.defesa = defesa;
-    }
-
-    public boolean isEfeito() {
-        return efeito;
-    }
-
-    public void setEfeito(boolean efeito) {
-        this.efeito = efeito;
-    }
-
-    public boolean isRegulador() {
-        return regulador;
-    }
-
-    public void setRegulador(boolean regulador) {
-        this.regulador = regulador;
     }
 
     public String getNome() {

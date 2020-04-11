@@ -1,6 +1,5 @@
 package com.example.tradego.ui.cadastro;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,79 +8,121 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.example.tradego.MainActivity;
 import com.example.tradego.R;
+import com.example.tradego.model.Carta;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CadastroFragment extends Fragment {
 
     private EditText nomeCarta;
-    private RadioButton radioButtonVento;
-    private RadioButton radioButtonFogo;
-    private RadioButton radioButtonAgua;
-    private RadioButton radioButtonTerra;
-    private RadioButton radioButtonLuz;
-    private RadioButton radioButtonTrevas;
-    private TextView estrelas;
-    private RadioButton radioButtonGuerreiro;
-    private RadioButton radioButtonMago;
-    private RadioButton radioButtonFada;
-    private RadioButton radioButtonDragao;
-    private RadioButton radioButtonPsiquico;
-    private RadioButton radioButtonBesta;
-    private RadioButton radioButtonDinossauro;
-    private RadioButton radioButtonReguladorV;
-    private RadioButton radioButtonReguladorF;
-    private RadioButton radioButtonEfeitoV;
-    private RadioButton radioButtonEfeitoF;
-    private EditText atk;
-    private EditText def;
+    private EditText atributoCarta;
+    private EditText tipoCarta;
+    private EditText estrelasCarta;
+    private EditText atkCarta;
+    private EditText defCarta;
     private Button buttonCadastrar;
     private SharedPreferences preferences;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_cadastro, container, false);
 
+        preferences = getActivity().getSharedPreferences("json", Context.MODE_PRIVATE);
+
         nomeCarta = root.findViewById(R.id.textNomeCarta);
-        radioButtonVento = root.findViewById(R.id.radioButtonVento);
-        radioButtonFogo = root.findViewById(R.id.radioButtonFogo);
-        radioButtonAgua = root.findViewById(R.id.radioButtonAgua);
-        radioButtonTerra = root.findViewById(R.id.radioButtonTerra);
-        radioButtonLuz = root.findViewById(R.id.radioButtonLuz);
-        radioButtonTrevas = root.findViewById(R.id.radioButtonTrevas);
-        estrelas = root.findViewById(R.id.textEstrelas);
-        radioButtonGuerreiro = root.findViewById(R.id.radioButtonGuerreiro);
-        radioButtonMago = root.findViewById(R.id.radioButtonMago);
-        radioButtonFada = root.findViewById(R.id.radioButtonFada);
-        radioButtonDragao = root.findViewById(R.id.radioButtonDragao);
-        radioButtonPsiquico = root.findViewById(R.id.radioButtonPsiquico);
-        radioButtonBesta = root.findViewById(R.id.radioButtonBesta);
-        radioButtonDinossauro = root.findViewById(R.id.radioButtonDinossauro);
-        radioButtonReguladorV = root.findViewById(R.id.radioButtonReguladorVerdadeiro);
-        radioButtonReguladorF = root.findViewById(R.id.radioButtonReguladorFalso);
-        radioButtonEfeitoV = root.findViewById(R.id.radioButtonEfeitoVerdadeiro);
-        radioButtonEfeitoF = root.findViewById(R.id.radioButtonEfeitoFalso);
-        atk = root.findViewById(R.id.textAtaque);
-        def = root.findViewById(R.id.textDefesa);
+        atributoCarta = root.findViewById(R.id.textAtributoCarta);
+        tipoCarta = root.findViewById(R.id.textTipoCarta);
+        estrelasCarta = root.findViewById(R.id.textEstrelas);
+        atkCarta = root.findViewById(R.id.textAtaque);
+        defCarta = root.findViewById(R.id.textDefesa);
         buttonCadastrar = root.findViewById(R.id.buttonCadastrar);
 
-        preferences = getActivity().getSharedPreferences("pref", Context.MODE_APPEND);
 
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Carta c = new Carta();
+
+                String nome = nomeCarta.getText().toString();
+                nomeCarta.setText("");
+                c.setNome(nome);
+
+                String atributo = atributoCarta.getText().toString();
+                atributoCarta.setText("");
+                c.setAtributo(atributo);
+
+                String tipo = tipoCarta.getText().toString();
+                tipoCarta.setText("");
+                c.setTipo(tipo);
+
+                int estrelas = Integer.parseInt(estrelasCarta.getText().toString());
+                estrelasCarta.setText("");
+                c.setEstrelas(estrelas);
+
+                int atk = Integer.parseInt(atkCarta.getText().toString());
+                atkCarta.setText("");
+                c.setAtaque(atk);
+
+                int def = Integer.parseInt(defCarta.getText().toString());
+                defCarta.setText("");
+                c.setDefesa(def);
+
+                cadastrarCarta(c);
 
             }
         });
 
-
-
-
         return root;
     }
+
+    public void cadastrarCarta(Carta c) {
+        Gson gson = new Gson();
+        SharedPreferences.Editor editor = preferences.edit();
+        String json = preferences.getString("cartas", null);
+
+        if (json == null) {
+
+            json = gson.toJson(c);
+            editor.putString("cartas", json);
+            editor.commit();
+
+            Toast.makeText(getActivity(), "Carta cadastrada", Toast.LENGTH_LONG).show();
+
+        } else {
+            List<Carta> cartas = new ArrayList();
+            try {
+                JSONArray array = new JSONArray(json);
+
+                for (int i = 0; i < array.length(); i++) {
+                    Carta c1 = gson.fromJson(String.valueOf(array.get(i)), Carta.class);
+                    cartas.add(c1);
+                }
+                cartas.add(c);
+                json = gson.toJson(cartas);
+                editor.putString("cartas", json);
+                editor.commit();
+                Toast.makeText(getActivity(), "Carta cadastrada", Toast.LENGTH_LONG).show();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity(), "Erro ocorrido", Toast.LENGTH_LONG).show();
+                System.err.println(e);
+            }
+        }
+    }
+
 }
