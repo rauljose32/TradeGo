@@ -69,4 +69,13 @@ public class Carta {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return
+                "Nome " + nome +
+                        ", Nivel " + estrelas +
+                        ", Atributo " + atributo +
+                        ", Tipo " + tipo +
+                        "\n";
+    }
 }

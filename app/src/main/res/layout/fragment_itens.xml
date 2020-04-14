@@ -5,4 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="Minhas Cartas"
+        android:textAlignment="center"
+        android:textSize="23dp" />
+
+    <ListView
+        android:id="@+id/listViewCartas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"/>
+
+
 </LinearLayout>

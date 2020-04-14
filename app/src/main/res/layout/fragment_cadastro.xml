@@ -56,7 +56,8 @@
             <EditText
                 android:id="@+id/textEstrelas"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
         </LinearLayout>
 
@@ -90,7 +91,8 @@
             <EditText
                 android:id="@+id/textAtaque"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
         </LinearLayout>
 
@@ -107,7 +109,8 @@
             <EditText
                 android:id="@+id/textDefesa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number" />
 
         </LinearLayout>
 

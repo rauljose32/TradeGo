@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_busca"
-        android:name="com.example.tradego.ui.slideshow.BuscaFragment"
+        android:name="com.example.tradego.ui.busca.BuscaFragment"
         android:label="@string/menu_busca"
         tools:layout="@layout/fragment_busca" />
 

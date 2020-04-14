@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,12 +93,12 @@ public class CadastroFragment extends Fragment {
     public void cadastrarCarta(Carta c) {
         Gson gson = new Gson();
         SharedPreferences.Editor editor = preferences.edit();
-        String json = preferences.getString("cartas", null);
+        String json = preferences.getString("json", null);
 
         if (json == null) {
-
             json = gson.toJson(c);
-            editor.putString("cartas", json);
+            editor.putString("json", json);
+            System.out.println(json);
             editor.commit();
 
             Toast.makeText(getActivity(), "Carta cadastrada", Toast.LENGTH_LONG).show();
@@ -105,21 +106,21 @@ public class CadastroFragment extends Fragment {
         } else {
             List<Carta> cartas = new ArrayList();
             try {
+                System.out.println(json);
                 JSONArray array = new JSONArray(json);
-
                 for (int i = 0; i < array.length(); i++) {
                     Carta c1 = gson.fromJson(String.valueOf(array.get(i)), Carta.class);
                     cartas.add(c1);
                 }
                 cartas.add(c);
                 json = gson.toJson(cartas);
-                editor.putString("cartas", json);
+                editor.putString("json", json);
                 editor.commit();
                 Toast.makeText(getActivity(), "Carta cadastrada", Toast.LENGTH_LONG).show();
 
             } catch (JSONException e) {
                 e.printStackTrace();
-                Toast.makeText(getActivity(), "Erro ocorrido", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Erro ocorrido" + e, Toast.LENGTH_LONG).show();
                 System.err.println(e);
             }
         }
